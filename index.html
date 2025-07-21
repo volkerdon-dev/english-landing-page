@@ -1,21 +1,48 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
-  <title>EngTrain App</title>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EngTrain App</title>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      margin: 20px;
+    }
+    button {
+      display: block;
+      width: 90%;
+      margin: 10px auto;
+      padding: 15px;
+      font-size: 18px;
+      background-color: #0099ff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
-  <div class="container">
-    <h1>👋 Добро пожаловать в EngTrain App!</h1>
-    <p>Бесплатные разделы:</p>
-    <button class="btn">📚 Grammar</button>
-    <button class="btn">🧠 Vocabulary</button>
-    <button class="btn">✍️ Practice</button>
-    <button class="btn">🎮 Игры</button>
-    <hr />
-    <button class="btn secondary">🔐 Что в полной версии?</button>
-  </div>
+  <h1>👋 Добро пожаловать в EngTrain App!</h1>
+  <p>Бесплатные разделы:</p>
+
+  <button onclick="sendCommand('grammar')">📚 Grammar</button>
+  <button onclick="sendCommand('vocabulary')">🧠 Vocabulary</button>
+  <button onclick="sendCommand('practice')">✍️ Practice</button>
+  <button onclick="sendCommand('games')">🎮 Игры</button>
+  <button onclick="sendCommand('full_version')">🔐 Что в полной версии?</button>
+
+  <script>
+    function sendCommand(command) {
+      if (window.Telegram.WebApp) {
+        Telegram.WebApp.sendData(command);
+      } else {
+        alert("Мини-приложение Telegram недоступно");
+      }
+    }
+  </script>
 </body>
 </html>
